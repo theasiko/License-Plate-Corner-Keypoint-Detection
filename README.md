@@ -16,13 +16,13 @@ The objective of the task is to design and train a deep learning system that dir
 
 Challenges of this task include:
 
-	significant perspective deformation depending on the viewing angle,
+•	significant perspective deformation depending on the viewing angle,
 	
-	varying illumination conditions,
+•	varying illumination conditions,
 	
-	partially occluded or blurred license plates,
+•	partially occluded or blurred license plates,
 	
-	differences in plate size across images.
+•	differences in plate size across images.
 
 3. Methods
 
@@ -36,13 +36,13 @@ A convolutional regression model based on MobileNetV3 was employed due to its ef
 
 The model was trained using:
 
-	Loss function: Smooth L1 loss (Huber)
+•	Loss function: Smooth L1 loss (Huber)
 	
-	Optimizer: Adam
+•	Optimizer: Adam
 	
-	Learning rate: chosen empirically
+•	Learning rate: chosen empirically
 	
-	Training device: T4 (Google Colab)
+•	Training device: T4 (Google Colab)
 
 After training, the best checkpoint (epoch 25) was selected and used for evaluation.
 
@@ -50,11 +50,11 @@ After training, the best checkpoint (epoch 25) was selected and used for evaluat
 
 Performance was assessed using Object Keypoint Similarity (OKS), a standard metric for evaluating keypoint localization. OKS measures the similarity between predicted and ground-truth keypoints while accounting for:
 
-	scale of the object,
+•	scale of the object,
 	
-	per-keypoint variability,
+•	per-keypoint variability,
 	
-	keypoint visibility.
+•	keypoint visibility.
 
 An OKS score of 1.0 indicates perfect alignment, while 0 indicates complete mismatch. The average OKS over the validation set is used as the main quantitative indicator.
 
@@ -64,9 +64,9 @@ An OKS score of 1.0 indicates perfect alignment, while 0 indicates complete mism
 
 Using the final model checkpoint, OKS was computed across all validation samples.
 
-	Mean OKS: 0.8266
+•	Mean OKS: 0.8266
 	
-	Number of evaluation samples (keypoint sets): 1140
+•	Number of evaluation samples (keypoint sets): 1140
 
 This score indicates that the predicted keypoints are consistently close to ground-truth locations, with errors typically small relative to the object scale.
 
